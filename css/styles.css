@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+}
+
+/* ======================================
+ Modal
+====================================== */
+.modal {
+  background: #fafafa;
+  display: none;
+  height: 600px;
+  left: 25%;
+  margin: 0 auto;
+  position: fixed;
+  top: 25%;
+  width: 600px;
+  z-index: 10;
+}
+
+.modal__body {
+  height: 100%;
+  padding: 2rem;
+  width: 100%;
+}
+
+.modal__overlay {
+  background-color: #000;
+  display: none;
+  height: 100%;
+  left: 0;
+  opacity: 0.5;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.modal__close-btn {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+}
+
+.modal--open {
+  display: block;
+}

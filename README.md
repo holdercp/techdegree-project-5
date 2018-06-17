@@ -7,7 +7,7 @@
   - First and Last Name
   - Email
   - City or location
-- [ ] Create a modal window that will pop up when any part of the user’s row is clicked. The following details should display in the modal window:
+- [x] Create a modal window that will pop up when any part of the user’s row is clicked. The following details should display in the modal window:
   - Image
   - Name
   - Username
