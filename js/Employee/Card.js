@@ -17,19 +17,23 @@ class EmployeeCard {
   // Create and array of child nodes to append to the parent component
   build() {
     const details = [];
-
     details.push(createNode(
-      'li',
-      `<img src="${this.employee.picture.large}" alt="${this.employee.name.first} ${
-        this.employee.name.last
-      }'s profile picture">`,
+      'p',
+      `${capitalize(this.employee.name.first)} ${capitalize(this.employee.name.last)}`,
+      'card__heading',
     ));
-    details.push(createNode('li', `${this.employee.name.first} ${this.employee.name.last}`));
-    details.push(createNode('li', `${this.employee.email}`));
-    details.push(createNode('li', `${this.employee.location.city}`));
+    details.push(createNode('a', `${this.employee.email}`, 'card__link', {
+      href: `mailto:${this.employee.email}`,
+    }));
+    details.push(createNode('p', `${capitalize(this.employee.location.city)}`, 'card__p'));
 
-    this.body = createNode('ul', details);
-    this.card = createNode('div', this.body);
+    this.img = createNode('img', null, 'card__img', {
+      src: `${this.employee.picture.large}`,
+      alt: `${this.employee.name.first} ${this.employee.name.last}'s profile picture`,
+    });
+
+    this.body = createNode('div', details, 'card__body');
+    this.card = createNode('div', [this.img, this.body], 'card');
     this.card.addEventListener('click', () => this.viewDetails());
 
     return this.card;
