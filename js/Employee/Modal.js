@@ -1,7 +1,10 @@
-class Modal {
+/*
+* Creates an EmployeeModal component
+* Tracks state of modal, either open or closed
+* Call update() to pass employee data to component and update content
+*/
+class EmployeeModal {
   constructor() {
-    this.build();
-    this.attachListeners();
     this.open = false;
   }
 
@@ -71,15 +74,16 @@ class Modal {
 
     // Append modal to doc fragment
     docFrag.appendChild(this.modal);
+    this.attachListeners();
 
-    // Append modal to document
-    document.body.appendChild(docFrag);
+    return docFrag;
   }
 
   // Attach listeners
   attachListeners() {
     this.closeBtn.addEventListener('click', () => this.closeModal());
     this.overlay.addEventListener('click', () => this.closeModal());
+    // Escape key closes modal
     document.addEventListener('keyup', (e) => {
       if (e.keyCode === 27 && this.isOpen()) this.closeModal();
     });

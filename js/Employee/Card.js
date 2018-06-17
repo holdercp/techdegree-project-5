@@ -1,15 +1,21 @@
+/*
+* Takes employee object and a EmployeeModal instance as arguments
+* Creates a card for a single employee
+* Attaches listener to card to open the modal instance for detailed employee info
+*/
 class EmployeeCard {
   constructor(employee, modal) {
     this.employee = employee;
     this.modal = modal;
   }
 
-  openModal() {
+  viewDetails() {
     this.modal.update(this.employee);
     this.modal.openModal();
   }
 
-  build(parentNode) {
+  // Create and array of child nodes to append to the parent component
+  build() {
     const details = [];
 
     details.push(createNode(
@@ -22,11 +28,10 @@ class EmployeeCard {
     details.push(createNode('li', `${this.employee.email}`));
     details.push(createNode('li', `${this.employee.location.city}`));
 
-    this.info = createNode('ul', details);
-    this.card = createNode('div', this.info);
-    this.card.addEventListener('click', () => this.openModal());
+    this.body = createNode('ul', details);
+    this.card = createNode('div', this.body);
+    this.card.addEventListener('click', () => this.viewDetails());
 
-    parentNode.appendChild(this.card);
     return this.card;
   }
 }

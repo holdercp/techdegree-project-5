@@ -2,7 +2,7 @@
 // html can be:
 // - A string to directly insert as innerHTML
 // - An array of child nodes to append
-// - A DOM node to append
+// - A single DOM node to append
 function createNode(elem, html, classNames = null) {
   const node = document.createElement(elem);
 
