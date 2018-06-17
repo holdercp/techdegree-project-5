@@ -1,6 +1,6 @@
 /*
 * Takes an array of employee objects and a Modal instance as arguments
-* Passes employees and EmployeeModal to EmployeeCard component
+* Passes employees and EmployeeModal to EmployeeCard components
 * Creates a list of EmployeeCards
 */
 class EmployeeList {
