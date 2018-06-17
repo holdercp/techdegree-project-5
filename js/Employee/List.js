@@ -12,10 +12,10 @@ class EmployeeList {
   build() {
     const listItems = this.employees.map((employee) => {
       const empCard = new EmployeeCard(employee, this.modal);
-      return createNode('li', empCard.build());
+      return createNode('li', empCard.build(), 'list__item');
     });
 
-    this.list = createNode('ul', listItems);
+    this.list = createNode('ul', listItems, 'list');
 
     return this.list;
   }
