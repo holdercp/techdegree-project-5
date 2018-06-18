@@ -14,7 +14,6 @@ class EmployeeCard {
     this.modal.openModal();
   }
 
-  // Create and array of child nodes to append to the parent component
   build() {
     const details = [];
     details.push(createNode(
@@ -34,6 +33,7 @@ class EmployeeCard {
 
     this.body = createNode('div', details, 'card__body');
     this.card = createNode('div', [this.img, this.body], 'card');
+
     this.card.addEventListener('click', () => this.viewDetails());
 
     return this.card;

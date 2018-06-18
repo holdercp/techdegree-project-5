@@ -25,55 +25,55 @@ class EmployeeModal {
   }
 
   update(employee) {
+    const info = [];
     const details = [];
 
-    details.push(createNode(
-      'li',
-      `<img src="${employee.picture.large}" alt="${employee.name.first} ${
-        employee.name.last
-      }'s profile picture">`,
+    info.push(createNode('img', null, 'modal__img', {
+      src: `${employee.picture.large}`,
+      alt: `${employee.name.first} ${employee.name.last}'s profile picture`,
+    }));
+    info.push(createNode(
+      'p',
+      `${capitalize(employee.name.first)} ${capitalize(employee.name.last)}`,
+      'modal__heading',
     ));
-    details.push(createNode('li', `${employee.name.first} ${employee.name.last}`));
-    details.push(createNode('li', `${employee.login.username}`));
-    details.push(createNode('li', `${employee.cell}`));
-    details.push(createNode('li', `${employee.email}`));
-    details.push(createNode('li', `${employee.location.street}`));
-    details.push(createNode('li', `${employee.location.city}`));
-    details.push(createNode('li', `${employee.location.state}`));
-    details.push(createNode('li', `${employee.location.postcode}`));
+    info.push(createNode('p', `${employee.login.username}`, 'modal__item'));
+    info.push(createNode('a', `${employee.email}`, 'modal__link', {
+      href: `mailto:${employee.email}`,
+    }));
+    info.push(createNode('p', `${capitalize(employee.location.city)}`, 'modal__item'));
 
-    this.info = createNode('ul', details);
+    details.push(createNode('a', `${employee.cell}`, 'modal__link', { href: `tel:${employee.cell}` }));
+    details.push(createNode(
+      'p',
+      `${capitalize(employee.location.street)}, ${capitalize(employee.location.state)} ${
+        employee.location.postcode
+      }`,
+      'modal__item',
+    ));
+    details.push(createNode('p', `Birthday: ${formatDate(employee.dob.date)}`, 'modal__item'));
+
+    this.info = createNode('div', info, 'modal__info');
+    this.details = createNode('div', details, 'modal__details');
 
     removeChildNodes(this.body);
     this.body.appendChild(this.info);
+    this.body.appendChild(createNode('hr', null, 'modal__hr'));
+    this.body.appendChild(this.details);
   }
 
   // Build the modal and attach to the DOM
   build() {
     const docFrag = document.createDocumentFragment();
 
-    // Build modal
-    this.modal = document.createElement('div');
-    this.modal.className = 'modal';
+    this.body = createNode('div', null, 'modal__body');
+    this.closeBtn = createNode('button', 'X', 'modal__close-btn');
+    this.modal = createNode('div', [this.body, this.closeBtn], 'modal');
+    this.overlay = createNode('div', null, 'modal__overlay');
 
-    // Build modal body and append
-    this.body = document.createElement('div');
-    this.body.className = 'modal__body';
-    this.modal.appendChild(this.body);
-
-    // Build close button and append to modal
-    this.closeBtn = document.createElement('button');
-    this.closeBtn.className = 'modal__close-btn';
-    this.closeBtn.textContent = 'x';
-    this.modal.appendChild(this.closeBtn);
-
-    // Build overlay and append to doc fragment
-    this.overlay = document.createElement('div');
-    this.overlay.className = 'modal__overlay';
     docFrag.appendChild(this.overlay);
-
-    // Append modal to doc fragment
     docFrag.appendChild(this.modal);
+
     this.attachListeners();
 
     return docFrag;

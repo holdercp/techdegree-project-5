@@ -47,3 +47,12 @@ function removeChildNodes(parentNode) {
 function capitalize(string) {
   return string.charAt(0).toUpperCase() + string.substr(1);
 }
+
+// Takes a timestamp and returns a string in the format "mm/dd/yy"
+function formatDate(timestamp) {
+  const date = new Date(timestamp);
+  return `${date.getMonth().toString()}/${date.getDay().toString()}/${date
+    .getFullYear()
+    .toString()
+    .slice(2)}`;
+}

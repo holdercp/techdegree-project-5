@@ -15,7 +15,7 @@
   - Cell Number
   - Detailed Address, including street name and number, city, state and/or country and post code.
   - Birthdate
-- [ ] Structure and style the user directory so that it roughly matches the provide mockup.
+- [x] Structure and style the user directory so that it roughly matches the provide mockup.
   - Display the users in a grid or table
   - Add a hover state to the rows of the user table.
   - Make sure there’s a way to close the modal window
