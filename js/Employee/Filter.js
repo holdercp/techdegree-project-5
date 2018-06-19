@@ -3,8 +3,6 @@
 * Creates an input field to enter filter term
 * Attaches listener that trigger EmployeeList.filterList() to populate the list with the correct employees
 */
-
-// TODO: Add event listener for "Enter"
 class EmployeeFilter {
   constructor(list) {
     this.list = list;
@@ -37,6 +35,12 @@ class EmployeeFilter {
     this.btn.addEventListener('click', () => {
       const filteredList = this.filterList(this.input.value.toLowerCase());
       this.list.update(filteredList);
+    });
+    this.input.addEventListener('keyup', (e) => {
+      if (e.keyCode === 13) {
+        const filteredList = this.filterList(this.input.value.toLowerCase());
+        this.list.update(filteredList);
+      }
     });
 
     return this.filter;
