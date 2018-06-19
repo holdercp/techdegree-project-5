@@ -4,7 +4,7 @@
 * Call update() to pass employee data to component and update content
 */
 
-// TODO: Animate opening and closing; cycling through employees
+// TODO: Animate cycling through employees
 class EmployeeModal {
   constructor() {
     this.open = false;

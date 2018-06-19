@@ -236,14 +236,14 @@ ul {
   border: 0;
   border-radius: 5px;
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
-  display: none;
   height: 500px;
   left: 50%;
   margin-left: -160px;
   position: fixed;
-  top: 10%;
+  top: -510px;
+  transition: transform 1s cubic-bezier(0.66, -0.3, 0.31, 1.31);
   width: 320px;
-  z-index: 10;
+  z-index: 20;
 }
 
 .modal__body {
@@ -283,13 +283,14 @@ ul {
 
 .modal__overlay {
   background-color: #000;
-  display: none;
   height: 100%;
   left: 0;
-  opacity: 0.5;
+  opacity: 0;
   position: fixed;
   top: 0;
+  transition: all 1s;
   width: 100%;
+  z-index: -1;
 }
 
 .modal__close-btn {
@@ -349,8 +350,13 @@ ul {
   right: 30px;
 }
 
-.modal--open {
-  display: block;
+.modal__overlay.modal--open {
+  opacity: 0.5;
+  z-index: 10;
+}
+
+.modal.modal--open {
+  transform: translateY(610px);
 }
 
 /* ======================================
