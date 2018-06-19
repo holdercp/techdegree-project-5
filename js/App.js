@@ -30,6 +30,14 @@ class App {
         this.app.removeChild(loader);
         this.initData(data);
         this.build();
+      })
+      .catch(() => {
+        this.app.removeChild(loader);
+        this.app.appendChild(createNode(
+          'p',
+          'Uh oh! Something went wrong. Refresh or try again later.',
+          'background__p',
+        ));
       });
   }
 
