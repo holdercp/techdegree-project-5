@@ -1,4 +1,5 @@
 /*
+* Takes an EmployeeList as an argument
 * Creates an EmployeeModal component
 * Tracks state of modal, either open or closed
 * Call update() to pass employee data to component and update content
@@ -25,6 +26,8 @@ class EmployeeModal {
   }
 
   update(employee) {
+    this.employee = employee;
+
     const info = [];
     const details = [];
 
@@ -70,6 +73,11 @@ class EmployeeModal {
     this.closeBtn = createNode('button', 'X', 'modal__close-btn');
     this.modal = createNode('div', [this.body, this.closeBtn], 'modal');
     this.overlay = createNode('div', null, 'modal__overlay');
+    this.next = createNode('button', '>', ['modal__nav', 'modal__nav--next']);
+    this.prev = createNode('button', '<', ['modal__nav', 'modal__nav--prev']);
+
+    this.modal.appendChild(this.prev);
+    this.modal.appendChild(this.next);
 
     docFrag.appendChild(this.overlay);
     docFrag.appendChild(this.modal);
@@ -86,6 +94,15 @@ class EmployeeModal {
     // Escape key closes modal
     document.addEventListener('keyup', (e) => {
       if (e.keyCode === 27 && this.isOpen()) this.closeModal();
+    });
+
+    this.next.addEventListener('click', () => {
+      const nextEmp = this.list.getAdjacentEmployee(this.employee);
+      this.update(nextEmp);
+    });
+    this.prev.addEventListener('click', () => {
+      const prevEmp = this.list.getAdjacentEmployee(this.employee, true);
+      this.update(prevEmp);
     });
   }
 }

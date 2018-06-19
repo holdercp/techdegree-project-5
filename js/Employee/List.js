@@ -19,6 +19,14 @@ class EmployeeList {
     });
   }
 
+  getAdjacentEmployee(currentEmployee, reverse = false) {
+    const currentIndex = this.employees.findIndex(employee => currentEmployee === employee);
+    if (reverse) {
+      return this.employees[currentIndex - 1 < 0 ? this.employees.length - 1 : currentIndex - 1];
+    }
+    return this.employees[currentIndex + 1 === this.employees.length ? 0 : currentIndex + 1];
+  }
+
   build() {
     const listItems = this.employees.map((employee) => {
       const empCard = new EmployeeCard(employee, this.modal);

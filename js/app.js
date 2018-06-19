@@ -17,6 +17,7 @@ class App {
       .then((data) => {
         this.employees = data.results;
         this.list = new EmployeeList(this.employees, this.modal);
+        this.modal.list = this.list;
         this.filter = new EmployeeFilter(this.list);
         this.build();
       });
