@@ -11,7 +11,8 @@ class EmployeeFilter {
   filterList(filterTerm) {
     if (filterTerm) {
       return this.list.employees.filter(employee =>
-        employee.name.first === filterTerm ||
+        `${employee.name.first} ${employee.name.last}` === filterTerm ||
+          employee.name.first === filterTerm ||
           employee.name.last === filterTerm ||
           employee.username === filterTerm);
     }
@@ -26,7 +27,7 @@ class EmployeeFilter {
       id: 'filterInput',
       placeholder: 'Jon Snow',
     });
-    this.btn = createNode('button', 'Filter', 'btn');
+    this.btn = createNode('button', 'Filter', ['btn', 'btn--primary', 'btn--right']);
     this.filter = createNode('div', [this.label, this.input, this.btn], 'filter');
 
     this.btn.addEventListener('click', () => {
