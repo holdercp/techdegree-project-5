@@ -19,6 +19,8 @@ class App {
         this.list = new EmployeeList(this.employees, this.modal);
         this.modal.list = this.list;
         this.filter = new EmployeeFilter(this.list);
+
+        this.renderPoint.removeChild(document.querySelector('.background__p'));
         this.build();
       });
   }
