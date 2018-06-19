@@ -157,8 +157,8 @@ ul {
   transition: background-color 0.5s;
 }
 
-.filter__input:active {
-  background-color: hsl(236, 100%, 95%);
+.filter__input:focus {
+  background-color: hsl(236, 100%, 97%);
 }
 
 /* ======================================
