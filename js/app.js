@@ -12,16 +12,18 @@ class App {
   }
 
   fetchEmployees() {
-    fetch('https://randomuser.me/api/?results=12')
+    fetch('https://randomuser.me/api/?results=12&nat=us')
       .then(response => response.json())
       .then((data) => {
         this.employees = data.results;
         this.list = new EmployeeList(this.employees, this.modal);
+        this.filter = new EmployeeFilter(this.list);
         this.build();
       });
   }
 
   build() {
+    this.renderPoint.appendChild(this.filter.build());
     this.renderPoint.appendChild(this.list.build());
     this.renderPoint.appendChild(this.modal.build());
   }

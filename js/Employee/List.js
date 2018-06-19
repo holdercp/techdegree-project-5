@@ -9,6 +9,16 @@ class EmployeeList {
     this.modal = modal;
   }
 
+  update(employees) {
+    this.filteredEmployees = employees;
+    removeChildNodes(this.list);
+
+    employees.forEach((employee) => {
+      const empCard = new EmployeeCard(employee, this.modal);
+      this.list.appendChild(createNode('li', empCard.build(), 'list__item'));
+    });
+  }
+
   build() {
     const listItems = this.employees.map((employee) => {
       const empCard = new EmployeeCard(employee, this.modal);
