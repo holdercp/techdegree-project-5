@@ -6,29 +6,32 @@
 */
 class App {
   constructor() {
-    this.renderPoint = document.getElementById('app');
+    this.app = document.getElementById('app');
     this.modal = new EmployeeModal();
     this.fetchEmployees();
   }
 
   fetchEmployees() {
+    const loader = createNode('div', 'Loading...', 'loader');
+    this.app.removeChild(document.querySelector('.background__p'));
+    this.app.appendChild(loader);
     fetch('https://randomuser.me/api/?results=12&nat=us')
       .then(response => response.json())
       .then((data) => {
+        this.app.removeChild(loader);
         this.employees = data.results;
         this.list = new EmployeeList(this.employees, this.modal);
         this.modal.list = this.list;
         this.filter = new EmployeeFilter(this.list);
 
-        this.renderPoint.removeChild(document.querySelector('.background__p'));
         this.build();
       });
   }
 
   build() {
-    this.renderPoint.appendChild(this.filter.build());
-    this.renderPoint.appendChild(this.list.build());
-    this.renderPoint.appendChild(this.modal.build());
+    this.app.appendChild(this.filter.build());
+    this.app.appendChild(this.list.build());
+    this.app.appendChild(this.modal.build());
   }
 }
 
