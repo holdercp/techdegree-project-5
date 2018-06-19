@@ -45,7 +45,12 @@ function removeChildNodes(parentNode) {
 
 // Capitalizes string
 function capitalize(string) {
-  return string.charAt(0).toUpperCase() + string.substr(1);
+  const arr = string.split(' ');
+  return arr.reduce((prevWord, currentWord, index) => {
+    let newString = prevWord + currentWord.charAt(0).toUpperCase() + currentWord.substring(1);
+    if (index < arr.length - 1) newString += ' ';
+    return newString;
+  }, '');
 }
 
 // Takes a timestamp and returns a string in the format "mm/dd/yy"
