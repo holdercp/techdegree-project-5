@@ -3,11 +3,15 @@
 * Creates an input field to enter filter term
 * Attaches listener that trigger EmployeeList.filterList() to populate the list with the correct employees
 */
+
+// TODO: Add event listener for "Enter"
 class EmployeeFilter {
   constructor(list) {
     this.list = list;
   }
 
+  // Matches employee name (first, last, or both) or username and returns new list
+  // If field is empty, the unfiltered list is displayed
   filterList(filterTerm) {
     if (filterTerm) {
       return this.list.employees.filter(employee =>

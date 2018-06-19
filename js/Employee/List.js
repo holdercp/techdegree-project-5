@@ -9,6 +9,7 @@ class EmployeeList {
     this.modal = modal;
   }
 
+  // Updates the list with a new set of employees
   update(employees) {
     this.filteredEmployees = employees;
     removeChildNodes(this.list);
@@ -19,6 +20,9 @@ class EmployeeList {
     });
   }
 
+  // Gets the next or prev employee in the list
+  // Defaults to getting the next employee
+  // Pass a boolean to get the previous employee
   getAdjacentEmployee(currentEmployee, reverse = false) {
     const currentIndex = this.employees.findIndex(employee => currentEmployee === employee);
     if (reverse) {

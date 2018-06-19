@@ -43,7 +43,7 @@ function removeChildNodes(parentNode) {
   }
 }
 
-// Capitalizes string
+// Capitalizes each word of string
 function capitalize(string) {
   const arr = string.split(' ');
   return arr.reduce((prevWord, currentWord, index) => {

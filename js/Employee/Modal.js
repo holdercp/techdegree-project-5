@@ -1,9 +1,10 @@
 /*
-* Takes an EmployeeList as an argument
 * Creates an EmployeeModal component
 * Tracks state of modal, either open or closed
 * Call update() to pass employee data to component and update content
 */
+
+// TODO: Animate opening and closing; cycling through employees
 class EmployeeModal {
   constructor() {
     this.open = false;
@@ -96,6 +97,7 @@ class EmployeeModal {
       if (e.keyCode === 27 && this.isOpen()) this.closeModal();
     });
 
+    // Cycle through employee details
     this.next.addEventListener('click', () => {
       const nextEmp = this.list.getAdjacentEmployee(this.employee);
       this.update(nextEmp);
