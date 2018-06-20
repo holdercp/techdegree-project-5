@@ -253,6 +253,16 @@ ul {
   width: 100%;
 }
 
+.modal__info {
+  animation: fadein 0.5s ease-in-out forwards;
+  opacity: 0;
+}
+
+.modal__details {
+  animation: fadein 0.5s ease-in-out 20ms forwards;
+  opacity: 0;
+}
+
 .modal__img {
   border-radius: 50%;
   margin-bottom: 1rem;
